@@ -112,8 +112,19 @@ protocol WeatherListPresenter: class {
     /// An initializer instantiating presenter with required dependencies.
     /// The idea is to make it explicit what init should be used
     /// to initialize all required & non-optional properties.
-    // ???: Is that a good idea to declare such initializer in protocol,
+    // ???: 1. Is that a good idea to declare such initializer in protocol,
     //      Or should they be a part of contrete implementation instead?
+    //      2. Should we declare it as required? (required init ...)?
+    //
+    // Benefits:
+    //
+    //  1. States that strategic required dependenceis should be known up front.
+    //  2. Helps convey the fact that those dependencies must be initialized properly when this object is initialized/
+    //  3. Helps to clarify order in which module components should be constructed ( see WeatherListDefaultBuilder.swift).
+    //
+    // Downsides:
+    //  1. Adds some restictions
+    //  2. Could make it harder to test (mock all dependencies).
     
     init(interactor: WeatherListInteractor, router: WeatherListRouter, view: WeatherListView)
     
