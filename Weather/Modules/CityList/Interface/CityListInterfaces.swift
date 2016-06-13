@@ -19,6 +19,8 @@ import UIKit
 
 protocol WeatherListBuilder {
     
+    // ???: Should we be explicit if / when this is UINavigationController?
+    
     func buildWeatherListModule() -> UIViewController?
 }
 
@@ -32,9 +34,10 @@ protocol WeatherListRouter {
     /// Just so router can do its navigation job
     /// with UIKit navigation stack.
     
-    // ???: Is that a good idea to declare such dependencies in a protocol?
-    //      Those protocols define interfaces to speficic module, so being specific could be probably desired.
-    //      .... or not?
+    // ???: 1. Is that a good idea to declare such dependencies in a protocol?
+    //          Those protocols define interfaces to speficic module, so being specific could be probably desired.
+    //          .... or not?
+    //      2. Should we be explicit if / when this is UINavigationController?
     
     unowned var viewController: UIViewController {get set}
     
