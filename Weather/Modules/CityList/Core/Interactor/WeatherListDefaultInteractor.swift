@@ -13,27 +13,37 @@ class WeatherListDefaultInteractor: WeatherListInteractor {
     
     func fetchWeather(completion: (FetchWeatherResult) -> ()){
         
-        let cities = self.allCities()
+        self.cityService.getCityList { (citiesResult) in
+            
+            switch citiesResult {
+            case .Success(let citiesData):
+                if let data = citiesData {
+                    completion(.Success(weather: self.cityWeatherFromCityData(data)))
+                    return
+                }
+                completion(.Success(weather: [self.emptyWeatherData("no cities found")]))
+                return
+            case .Failure(_):
+                completion(.Success(weather: [self.emptyWeatherData("Failure getting  cities")]))
+                return
+            }
+            
+        }
+    
         
-        let citiesWeather = cities.map { (cityName) -> WeatherData in
-            switch self.weatherService.weatherData(cityName) {
+    }
+    
+    func cityWeatherFromCityData(citiesData: [CityData]) -> [WeatherData] {
+        let citiesWeather = citiesData.map { (city) -> WeatherData in
+            switch self.weatherService.weatherData(city.name) {
             case .Success(let weather):
                 return weather
             case .Failure(_):
-                return emptyWeatherData(cityName)
+                return emptyWeatherData(city.name)
             }
         }
         
-        completion(FetchWeatherResult.Success(weather: citiesWeather))
-    }
-    
-    func allCities() -> [String] {
-        // Access actual storage
-        let cityNames = self.cityService.cityList().map { (city) -> String in
-            return city.name
-        }
-        
-        return cityNames
+        return citiesWeather
     }
     
     func emptyWeatherData(cityName: String) -> WeatherData {
