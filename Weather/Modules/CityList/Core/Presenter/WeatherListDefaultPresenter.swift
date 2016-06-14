@@ -20,7 +20,7 @@ class WeatherListDefaultPresenter: WeatherListPresenter, CityNewDelegate {
                 self.view.displayWeatherList(self.buildViewModelForWeatherData(fetchedWeather))
                 break
             case .Failure(let reason):
-                self.view.displayError(reason.localizedDescription)
+                self.view.displayError("Error!", errorMessage: reason.localizedDescription)
             }
         }
     }
@@ -36,7 +36,7 @@ class WeatherListDefaultPresenter: WeatherListPresenter, CityNewDelegate {
     func newCityCreated(city: City) {
         self.router.closeAddWeatherLocation()
         // TODO: Maybe update to reflect cahnge...
-        self.view.displayError("City creted: \(city.name)")
+        self.view.displayError("SUCCESS!", errorMessage: "City creted: \(city.name)")
     }
     
     func newCityCancelled() {

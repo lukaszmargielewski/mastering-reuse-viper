@@ -21,8 +21,8 @@ class WeatherListViewController: UITableViewController, WeatherListView {
         self.tableView.reloadData()
     }
     
-    func displayError(errorMessage: String) {
-        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .Alert)
+    func displayError(errorTitle: String, errorMessage: String) {
+        let alert = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .Alert)
         let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
         alert.addAction(cancelAction)
         

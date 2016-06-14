@@ -62,9 +62,9 @@ class CityNewDefaultViewController: UIViewController, CityNewView, UITextFieldDe
     
     }
     
-    func displayError(errorMessage: String) {
+    func displayError(errorTitle: String, errorMessage: String) {
     
-        let alert = UIAlertController(title: "Oops!", message:errorMessage, preferredStyle: .Alert)
+        let alert = UIAlertController(title: errorTitle, message:errorMessage, preferredStyle: .Alert)
         let action = UIAlertAction(title: "OK", style: .Default) { _ in
             // Put here any code that you would like to execute when
             // the user taps that OK button (may be empty in your case if that's just

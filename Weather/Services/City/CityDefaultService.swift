@@ -15,7 +15,18 @@ class CityDefaultService: CityService {
     }
     
     func saveCity(name: String, completion: (CityServiceSaveResult) -> ()) {
-        completion(CityServiceSaveResult.Success(cityData: self.mockCityData(name)))
+        
+        let random_number = Int(arc4random_uniform(1) + 0)
+        
+        if random_number == 0 {
+        
+            completion(CityServiceSaveResult.Success(cityData: self.mockCityData(name)))
+        } else {
+        
+            completion(CityServiceSaveResult.Failure(reason: NSError.init(domain: "Random error createing city", code: 0, userInfo: nil)))
+        }
+        
+        
     }
     
     

@@ -185,5 +185,5 @@ protocol WeatherListView: class {
     //Interface:
     
     func displayWeatherList(viewModel: WeatherListViewModel)
-    func displayError(errorMessage: String)
+    func displayError(errorTitle: String, errorMessage: String)
 }

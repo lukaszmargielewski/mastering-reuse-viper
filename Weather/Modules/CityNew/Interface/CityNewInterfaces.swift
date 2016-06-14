@@ -98,5 +98,5 @@ protocol CityNewView: class {
     var presenter: CityNewPresenter? {get set}
     
     func update(viewModel: CityViewModel)
-    func displayError(errorMessage: String)
+    func displayError(errorTitle: String, errorMessage: String)
 }

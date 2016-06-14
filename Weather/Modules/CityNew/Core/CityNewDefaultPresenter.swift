@@ -33,24 +33,25 @@ class CityNewDefaultPresenter: CityNewPresenter {
     
         guard let cityName = self.cityName else {
         
-            self.view.displayError("City name must not be empty")
+            self.view.displayError("City name", errorMessage: "must not be empty")
             return
         }
         
         guard cityName.utf8.count >= 5 else {
             
-            self.view.displayError("City name must be at least 5 characters long")
+            self.view.displayError("City name", errorMessage: "must be at least 5 characters long")
             return
         }
         
         self.interactor.saveCity(cityName) { (result : CitySaveResult) in
-            print("Saving city: \(cityName) result: \(result)")
             switch result {
             case .Success(let city):
+                print("Saved successfully city: \(cityName) result: \(result)")
                 self.delegate.newCityCreated(city)
                 break
             case .Failure(let reason):
-                self.view.displayError(reason.localizedDescription)
+                print("Failure creating city: \(cityName) result: \(result)")
+                self.view.displayError("Error", errorMessage: reason.localizedDescription)
             }
         }
     }
