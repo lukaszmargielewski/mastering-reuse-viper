@@ -36,14 +36,14 @@ class CityNewDefaultViewController: UIViewController, CityNewView, UITextFieldDe
             make.top.equalTo(self.snp_topLayoutGuideBottom).offset(30)
             make.height.equalTo(40)
         }
-        
     }
     
     override func viewDidLoad() {
         
         guard let _ = self.navigationController else {
         
-            print("This implementation supports modal presnetation only and therefor requies to be presented withen UINavigationController.")
+            print("This implementation supports modal presentation only and therefore requies to be presented withen UINavigationController.")
+            // TODO: Implement an option when this is shown without navigation controller (f.ex.: not modal)
             return
         }
         
