@@ -23,7 +23,7 @@ class CityDefaultService: CityService {
             completion(CityServiceSaveResult.Success(cityData: self.mockCityData(name)))
         } else {
         
-            completion(CityServiceSaveResult.Failure(reason: NSError.init(domain: "Random error createing city", code: 0, userInfo: nil)))
+            completion(CityServiceSaveResult.Failure(reason: NSError.init(domain: "Random error creating city", code: 0, userInfo: nil)))
         }
     }
     
