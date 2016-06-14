@@ -29,11 +29,17 @@ class CityNewDefaultViewController: UIViewController, CityNewView, UITextFieldDe
         
         self.view       = view
         self.textField  = textField
-        self.view.setNeedsUpdateConstraints()
+       
+        textField.snp_makeConstraints { (make) -> Void in
+            make.left.equalTo(30)
+            make.right.equalTo(-30)
+            make.top.equalTo(self.snp_topLayoutGuideBottom).offset(30)
+            make.height.equalTo(40)
+        }
+        
     }
     
     override func viewDidLoad() {
-        
         
         guard let _ = self.navigationController else {
         
@@ -45,16 +51,6 @@ class CityNewDefaultViewController: UIViewController, CityNewView, UITextFieldDe
         self.navigationItem.leftBarButtonItem  = UIBarButtonItem.init(barButtonSystemItem: .Cancel, target: self, action: #selector(cancel))
     }
     
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-        
-        self.textField?.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(30)
-            make.right.equalTo(-30)
-            make.top.equalTo(self.snp_topLayoutGuideBottom).offset(30)
-            make.height.equalTo(40)
-        }
-    }
     
     // -- MARK: UITextFieldDelegate
     
