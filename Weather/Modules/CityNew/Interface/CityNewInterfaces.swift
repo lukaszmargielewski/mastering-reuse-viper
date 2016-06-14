@@ -36,11 +36,11 @@ protocol CityNewBuilder {
 protocol CityNewPresenter {
 
     
-    var         interactor  : WeatherListInteractor {get set}
-    unowned var view        : WeatherListView       {get set}
-    unowned var delegate    : CityNewDelegate       {get set}
+    var         interactor  : CityNewInteractor {get set}
+    unowned var view        : CityNewView       {get set}
+    unowned var delegate    : CityNewDelegate   {get set}
     
-    init(interactor: WeatherListInteractor, view: WeatherListView, delegate: CityNewDelegate)
+    init(interactor: CityNewInteractor, view: CityNewView, delegate: CityNewDelegate)
     
     func cityNameUpdated(name : String)
     func doneTapped()

@@ -13,7 +13,12 @@ class CityNewDefaultBuilder : CityNewBuilder {
     
     func buildNewCityModule(delegate: CityNewDelegate) -> UIViewController? {
         
+        let interactor = CityNewDefaultInteractor.init(cityService: CityDefaultService())
         let view = CityNewDefaultViewController()
+        let presenter = CityNewDefaultPresenter.init(interactor: interactor, view: view, delegate: delegate)
+        
+        view.presenter = presenter
+        
         return view
     }
 }

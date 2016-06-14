@@ -18,7 +18,8 @@ class WeatherListDefaultRouter: WeatherListRouter {
     func navigateToAddWeatherLocation(delegate: CityNewDelegate) {
         // TODO
         if let cityAddVC = self.cityNewBuilder()?.buildNewCityModule(delegate) {
-            self.viewController.navigationController?.presentViewController(cityAddVC, animated: true, completion: nil)
+            let navigationController = UINavigationController.init(rootViewController: cityAddVC)
+            self.viewController.navigationController?.presentViewController(navigationController, animated: true, completion: nil)
         }
     }
     

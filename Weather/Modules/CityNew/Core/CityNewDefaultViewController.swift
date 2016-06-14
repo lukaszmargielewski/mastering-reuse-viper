@@ -15,6 +15,10 @@ class CityNewDefaultViewController: UIViewController, CityNewView {
     
     // -- Mark UIViewController:
     
+    override func viewDidLoad() {
+        
+    } 
+    
     // -- MARK: CityNewView
     
     func update(viewModel: CityViewModel) {
