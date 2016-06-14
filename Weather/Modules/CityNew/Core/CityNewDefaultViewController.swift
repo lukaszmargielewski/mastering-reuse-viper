@@ -7,22 +7,29 @@
 //
 
 import UIKit
+import SnapKit
 
 class CityNewDefaultViewController: UIViewController, CityNewView, UITextFieldDelegate {
     
     var presenter: CityNewPresenter?
-    
+    var textField : UITextField?
     
     // -- Mark UIViewController:
     
     override func loadView() {
-        let textField = UITextField.init(frame: CGRect.init(x: 30, y: 90, width: 200, height: 40))
+        
+        let textField = UITextField()
+        let view = UIView()
+        view.backgroundColor  = UIColor.whiteColor()
+        view.addSubview(textField)
+        
         textField.layer.borderWidth = 1
         textField.delegate = self
-        self.view = UIView.init(frame: UIScreen.mainScreen().bounds)
-        self.view.backgroundColor = UIColor.whiteColor()
-        self.view.addSubview(textField)
         textField.becomeFirstResponder()
+        
+        self.view       = view
+        self.textField  = textField
+        self.view.setNeedsUpdateConstraints()
     }
     
     override func viewDidLoad() {
@@ -38,6 +45,16 @@ class CityNewDefaultViewController: UIViewController, CityNewView, UITextFieldDe
         self.navigationItem.leftBarButtonItem  = UIBarButtonItem.init(barButtonSystemItem: .Cancel, target: self, action: #selector(cancel))
     }
     
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+        
+        self.textField?.snp_makeConstraints { (make) -> Void in
+            make.left.equalTo(30)
+            make.right.equalTo(-30)
+            make.top.equalTo(self.snp_topLayoutGuideBottom).offset(30)
+            make.height.equalTo(40)
+        }
+    }
     
     // -- MARK: UITextFieldDelegate
     
