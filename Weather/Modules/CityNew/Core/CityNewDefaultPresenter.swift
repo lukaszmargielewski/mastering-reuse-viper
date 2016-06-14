@@ -39,12 +39,20 @@ class CityNewDefaultPresenter: CityNewPresenter {
         
         guard cityName.utf8.count >= 5 else {
             
-            self.view.displayError("City name must not be at least 5 characters long")
+            self.view.displayError("City name mustd be at least 5 characters long")
             return
         }
         
-        self.interactor.saveCity(cityName) { (result) in
+        self.interactor.saveCity(cityName) { (result : CitySaveResult) in
             
+            switch result {
+            case .Success(let city):
+
+                self.delegate.newCityCreated(city)
+                break
+            case .Failure(let reason):
+                self.view.displayError(reason.localizedDescription)
+            }
         }
     }
     

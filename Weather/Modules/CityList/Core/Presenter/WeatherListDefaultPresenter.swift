@@ -33,12 +33,14 @@ class WeatherListDefaultPresenter: WeatherListPresenter, CityNewDelegate {
         self.router.navigateToAddWeatherLocation(self)
     }
     
-    func newCityCreated(city: String) {
-        
+    func newCityCreated(city: City) {
+        self.router.closeAddWeatherLocation()
+        // TODO: Maybe update to reflect cahnge...
     }
     
     func newCityCancelled() {
       
+        self.router.closeAddWeatherLocation()
     }
     
     private func buildViewModelForWeatherData(weatherData: [WeatherData]) -> WeatherListViewModel {

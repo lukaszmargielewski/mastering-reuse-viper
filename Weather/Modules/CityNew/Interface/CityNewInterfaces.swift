@@ -18,7 +18,7 @@ import UIKit
 
 protocol CityNewDelegate : class {
     
-    func newCityCreated(city: String)
+    func newCityCreated(city: City)
     func newCityCancelled()
 }
 
