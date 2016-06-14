@@ -15,7 +15,7 @@ class CityDefaultService: CityService {
     }
     
     func saveCity(name: String, completion: (CityServiceSaveResult) -> ()) {
-        completion(CityServiceSaveResult.Success(cityData: self.mockCityData()))
+        completion(CityServiceSaveResult.Success(cityData: self.mockCityData(name)))
     }
     
     
@@ -30,7 +30,7 @@ class CityDefaultService: CityService {
         ]
     }
     
-    func mockCityData() -> CityData {
-        return CityData(name: "Paris"  , identifier: 5)
+    func mockCityData(name: String) -> CityData {
+        return CityData(name: name, identifier: 5)
     }
 }

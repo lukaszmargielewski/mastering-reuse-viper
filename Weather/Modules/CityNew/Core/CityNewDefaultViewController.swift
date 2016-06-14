@@ -20,6 +20,7 @@ class CityNewDefaultViewController: UIViewController, CityNewView, UITextFieldDe
         textField.layer.borderWidth = 1
         textField.delegate = self
         self.view = UIView.init(frame: UIScreen.mainScreen().bounds)
+        self.view.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(textField)
         textField.becomeFirstResponder()
     }

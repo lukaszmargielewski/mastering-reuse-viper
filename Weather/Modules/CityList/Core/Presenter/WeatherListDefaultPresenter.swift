@@ -36,6 +36,7 @@ class WeatherListDefaultPresenter: WeatherListPresenter, CityNewDelegate {
     func newCityCreated(city: City) {
         self.router.closeAddWeatherLocation()
         // TODO: Maybe update to reflect cahnge...
+        self.view.displayError("City creted: \(city.name)")
     }
     
     func newCityCancelled() {
