@@ -75,6 +75,7 @@ protocol WeatherListInteractor: class {
     //      (see more in WeatherListPresenter debate questions)
     
     var weatherService: WeatherService {get set}
+    var cityService: CityService {get set}
     
     /// An initializer instantiating interactor with required (?) dependency.
     /// The idea is to make it explicit what init should be used
@@ -82,7 +83,7 @@ protocol WeatherListInteractor: class {
     // ???: 1. Is that a good idea to declare such initializer in protocol
     //      (see more in WeatherListPresenter debate questions)
     
-    init(weatherService: WeatherService)
+    init(weatherService: WeatherService, cityService: CityService)
     
     func fetchWeather(completion: (FetchWeatherResult) -> ())
 }

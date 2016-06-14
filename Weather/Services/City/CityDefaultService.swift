@@ -11,7 +11,7 @@ import Foundation
 class CityDefaultService: CityService {
     
     func getCityList(completion: (CityServiceResult) -> ()) {
-        completion(CityServiceResult.Success(citiesData: self.mockCitiesData()))
+        completion(CityServiceResult.Success(citiesData: self.cityList()))
     }
     
     func saveCity(name: String, completion: (CityServiceSaveResult) -> ()) {
@@ -25,14 +25,9 @@ class CityDefaultService: CityService {
         
             completion(CityServiceSaveResult.Failure(reason: NSError.init(domain: "Random error createing city", code: 0, userInfo: nil)))
         }
-        
-        
     }
     
-    
-    // -- MARK: Mocks:
-    
-    func mockCitiesData() -> [CityData] {
+    func cityList() -> [CityData] {
         return [
             CityData(name: "Copehagen"  , identifier: 1),
             CityData(name: "Warsaw"     , identifier: 2),

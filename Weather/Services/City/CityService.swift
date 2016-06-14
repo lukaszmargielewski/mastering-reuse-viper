@@ -29,6 +29,7 @@ enum CityServiceSaveResult {
 
 protocol CityService {
     
+    func cityList() -> [CityData]
     func getCityList(completion:(CityServiceResult) -> ())
     func saveCity(name: String, completion:(CityServiceSaveResult) -> ())
 }

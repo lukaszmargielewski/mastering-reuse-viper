@@ -4,9 +4,11 @@ import Foundation
 class WeatherListDefaultInteractor: WeatherListInteractor {
     
     var weatherService: WeatherService
+    var cityService: CityService
     
-    required init(weatherService: WeatherService){
+    required init(weatherService: WeatherService, cityService: CityService) {
         self.weatherService = weatherService
+        self.cityService = cityService
     }
     
     func fetchWeather(completion: (FetchWeatherResult) -> ()){
@@ -27,7 +29,11 @@ class WeatherListDefaultInteractor: WeatherListInteractor {
     
     func allCities() -> [String] {
         // Access actual storage
-        return ["Rome", "London", "Dublin"]
+        let cityNames = self.cityService.cityList().map { (city) -> String in
+            return city.name
+        }
+        
+        return cityNames
     }
     
     func emptyWeatherData(cityName: String) -> WeatherData {
