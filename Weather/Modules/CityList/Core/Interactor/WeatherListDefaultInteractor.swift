@@ -27,10 +27,7 @@ class WeatherListDefaultInteractor: WeatherListInteractor {
                 completion(.Success(weather: [self.emptyWeatherData("Failure getting  cities")]))
                 return
             }
-            
         }
-    
-        
     }
     
     func cityWeatherFromCityData(citiesData: [CityData]) -> [WeatherData] {
@@ -42,7 +39,6 @@ class WeatherListDefaultInteractor: WeatherListInteractor {
                 return emptyWeatherData(city.name)
             }
         }
-        
         return citiesWeather
     }
     
