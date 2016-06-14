@@ -15,11 +15,23 @@ class WeatherListDefaultRouter: WeatherListRouter {
         }
     }
     
-    func navigateToAddWeatherLocation() {
+    func navigateToAddWeatherLocation(delegate: CityNewDelegate) {
         // TODO
+        if let cityAddVC = self.cityNewBuilder()?.buildNewCityModule(delegate) {
+            self.viewController.navigationController?.presentViewController(cityAddVC, animated: true, completion: nil)
+        }
     }
     
-    private func weatherDetailBuilder() -> WeatherDetailBuilder?{
+    func closeAddWeatherLocation() {
+        // TODO
+        self.viewController.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    private func weatherDetailBuilder() -> WeatherDetailBuilder? {
         return WeatherDetailDefaultBuilder()
+    }
+    
+    private func cityNewBuilder() -> CityNewBuilder? {
+        return CityNewDefaultBuilder()
     }
 }

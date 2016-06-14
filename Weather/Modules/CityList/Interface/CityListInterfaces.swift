@@ -50,9 +50,12 @@ protocol WeatherListRouter {
     
     init(viewController: UIViewController)
     
-    
     func navigateToWeatherDetail(city: String)
-    func navigateToAddWeatherLocation()
+    
+    // ???: Is that a good place to for dismiss delegate?
+    // ???: Should it be optional?
+    func navigateToAddWeatherLocation(delegate: CityNewDelegate)
+    func closeAddWeatherLocation()
 }
 
 
@@ -67,6 +70,19 @@ enum FetchWeatherResult {
 }
 
 protocol WeatherListInteractor: class {
+    
+    // ???: Is that a good idea to declare this dependency in a protocol?
+    //      (see more in WeatherListPresenter debate questions)
+    
+    var weatherService: WeatherService {get set}
+    
+    /// An initializer instantiating interactor with required (?) dependency.
+    /// The idea is to make it explicit what init should be used
+    /// to initialize required & non-optional weather service property.
+    // ???: 1. Is that a good idea to declare such initializer in protocol
+    //      (see more in WeatherListPresenter debate questions)
+    
+    init(weatherService: WeatherService)
     
     func fetchWeather(completion: (FetchWeatherResult) -> ())
 }

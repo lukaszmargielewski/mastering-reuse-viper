@@ -3,9 +3,9 @@ import Foundation
 
 class WeatherListDefaultInteractor: WeatherListInteractor {
     
-    let weatherService: WeatherService
+    var weatherService: WeatherService
     
-    init(weatherService: WeatherService){
+    required init(weatherService: WeatherService){
         self.weatherService = weatherService
     }
     

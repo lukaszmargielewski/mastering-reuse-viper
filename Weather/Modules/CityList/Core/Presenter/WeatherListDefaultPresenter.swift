@@ -1,6 +1,6 @@
 import Foundation
 
-class WeatherListDefaultPresenter: WeatherListPresenter {
+class WeatherListDefaultPresenter: WeatherListPresenter, CityNewDelegate {
     
     var         interactor  : WeatherListInteractor
     var         router      : WeatherListRouter
@@ -30,7 +30,15 @@ class WeatherListDefaultPresenter: WeatherListPresenter {
     }
     
     func presentAddWeatherLocation(){
-        self.router.navigateToAddWeatherLocation()
+        self.router.navigateToAddWeatherLocation(self)
+    }
+    
+    func newCityCreated(city: String) {
+        
+    }
+    
+    func newCityCancelled() {
+      
     }
     
     private func buildViewModelForWeatherData(weatherData: [WeatherData]) -> WeatherListViewModel {
