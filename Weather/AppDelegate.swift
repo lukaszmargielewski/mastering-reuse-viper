@@ -14,22 +14,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        guard let rootVc = self.weatherListBuilder()?.buildWeatherListModule() else {
+
+        guard let rootVc = self.cityListBuilder()?.buildCityListModule() else {
             print("Root Module failed to build. Check your DI setup.")
             return false
         }
-        
+
         // ???: Could this be implemented as some kind of router?
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = UINavigationController(rootViewController: rootVc)
         self.window?.makeKeyWindow()
-        
+
         return true
     }
-    
-    private func weatherListBuilder() -> WeatherListBuilder? {
-        return WeatherListDefaultBuilder()
+
+    private func cityListBuilder() -> CityListBuilder? {
+        return CityListBuilder()
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -56,4 +56,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
